@@ -15,7 +15,8 @@ if p.returncode:
     sys.exit(p.returncode)
 found = dict(re.findall(r"'([^']+)' depends on axioms: \[([^\]]*)\]", p.stdout))
 allowed = {"propext", "Classical.choice", "Quot.sound"}
-for name in ("Fn_not_sum_two_bent", "Fn_not_at_most_two", "full_infinite_family"):
+for name in ("Fn_not_sum_two_bent", "Fn_not_at_most_two", "full_infinite_family",
+             "Bent.even_dimension", "walsh_parseval"):
     target = "BentDecompositions.Family." + name
     if target not in found or not set(found[target].replace(" ", "").split(",")) <= allowed:
         sys.exit(f"Missing or unexpected axiom report: {target}")

@@ -14,6 +14,10 @@ def character {n : ℕ} (u x : Point n) : ℤ := (-1) ^ (u ∩ x).card
 def walsh {n : ℕ} (f : BF n) (u : Point n) : ℤ :=
   ∑ x : Point n, sign (f x) * character u x
 
+/- A Boolean function is bent when all its Walsh coefficients have magnitude
+`2^(n/2)`. Although the definition allows any natural dimension, bentness forces
+`Even n`: see `Bent.even_dimension` in `BentDecomposition/EvenDimension.lean`,
+proved from Walsh–Parseval. Thus no even-dimension hypothesis is needed here. -/
 def Bent {n : ℕ} (f : BF n) : Prop :=
   ∀ u, walsh f u = (2 : ℤ)^(n/2) ∨ walsh f u = -((2 : ℤ)^(n/2))
 

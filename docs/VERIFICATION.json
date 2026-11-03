@@ -17,9 +17,10 @@
   "source_sha256": {
     "BentDecomposition/WalshSupport.lean": "0df3fbf74744c6b6c35685f6b3436f2a352cee157961c1c5b3b1bbf0ba2292a6",
     "BentDecomposition/Support.lean": "1e3f95b808b11e3f9422417d8c311bec37b497bdd27d639f1286b45ce9b50737",
+    "BentDecomposition/EvenDimension.lean": "d619afcc592d33cb3ad6842090b6671ba6e203e7c5cfc4e31ef95241d84de27f",
     "BentDecomposition/Restriction.lean": "90c1e1f91a4c0cad13b07f34c79870b8e95d0b543029c560d0be258ea43c89b1",
     "BentDecomposition/Arithmetic.lean": "713441b70117eda6cd8fd6b486b45fb3b2d07b3c617b07a61d91becf7c595109",
-    "BentDecomposition/Basic.lean": "65b4b323d517eb85de9a7b9d7a5d53d1da231a27227afe30956ffe6d6133ee94",
+    "BentDecomposition/Basic.lean": "2fe6bb752ab0ed472dc547b64445660918beb4078e55d488f428ab5aee0b56e3",
     "BentDecomposition/Signs.lean": "0c3bfa0dd1d05e235067c8cba3d90c4e93fa748363a852c56dbdb5ddba427984",
     "BentDecomposition/Geometry.lean": "163f243d17ae3396fc394290bb081efbfd925fb44668f9800c62a3167c1cc29b",
     "BentDecomposition/Degree.lean": "f99deaeac5eb65b56fe04bd7db0be77afb62f217e58c65d79c0e3fae35301d18",
@@ -27,10 +28,14 @@
     "BentDecomposition/Walsh.lean": "15bf88f8e82a10872741b8b517586e08e5a9b8eb090b638c32f56d04838ef550",
     "BentDecomposition/Nonbent.lean": "0bbdee9243bfa10039bac0e0a8d1de9b2771a807cb51bf2b17e544708a34c43a",
     "BentDecomposition/Main.lean": "a1c9c280bd414615d132a808c4601044a013c5b515b5fdda21a3c49b13a0fb24",
-    "BentDecomposition.lean": "13d10122ed43119a510cabd9916e2d7d1041541d2a2a9039dee242c67ff411c1",
-    "Audit.lean": "144830e8924678f54f77a8be125859bd84c02c1d27c73d8c5730ed7634870287",
+    "BentDecomposition.lean": "0f093f71338fc62558aa727390975c9cfa513f7a49bce9975d0862de4c3a085b",
+    "Audit.lean": "2a133d18107cb34983ae1a002681fa4c055df93f8f6ee1d2d729ba5e5c716645",
     "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
     "lake-manifest.json": "5f82144f7857554af094c01aa48e63ce50fe1bf3ccbb0ef785bb0009e49891ac",
     "lakefile.toml": "2ed3f7d5114c59daa66728ab3f8dc285b5dcbc455f46cbe7876617457d0c46c8"
-  }
+  },
+  "additional_checked_theorems": [
+    "BentDecompositions.Family.Bent.even_dimension",
+    "BentDecompositions.Family.walsh_parseval"
+  ]
 }

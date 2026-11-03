@@ -29,3 +29,7 @@ The proof follows the four mathematical steps: support; orthogonality; affine re
 `Fn_not_sum_two_bent` quantifies over all Boolean function pairs, with no construction-class or symmetry restriction. The normalized weight discrepancy must be divisible by 2^(n/2), but is four modulo eight. `Fn_not_bent` and `Fn_ne_zero` handle the remaining one- and zero-summand cases. `full_infinite_family` combines those results with exact degree.
 
 This repository does not assert a three-bent decomposition, a lower bound above three summands, or a result in every non-dyadic even dimension. No novelty or journal-acceptance claim is implied by formal verification.
+
+## Even dimension
+
+`EvenDimension.lean` proves character orthogonality, integer Walsh–Parseval, and `Bent.even_dimension : Bent f → Even n`. Parseval and flat magnitude imply n=2*(n/2), so odd dimensions cannot satisfy the definition. The theorem includes n=0; no positivity or evenness hypothesis is assumed.
