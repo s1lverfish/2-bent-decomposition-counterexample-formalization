@@ -1,0 +1,11 @@
+name = "bent_decomposition"
+version = "0.1.0"
+defaultTargets = ["BentDecomposition"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0"
+
+[[lean_lib]]
+name = "BentDecomposition"

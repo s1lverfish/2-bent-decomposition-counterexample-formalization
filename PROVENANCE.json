@@ -1,0 +1,50 @@
+{
+  "original_research_revision": "1052fd3",
+  "migration": "Module paths renamed; module/public/expose visibility declarations added. Mathematical statements and arguments retained. Redundant simp arguments, deprecated if_neg alias and unnecessary tactic sequencing cleaned up. Signs extracts only generic two-element sign helpers.",
+  "sources": {
+    "BentDecomposition/Arithmetic.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Arithmetic.lean",
+      "original_sha256": "4567aadf892de5ebf1293bcc40334b8d7de845be017b1387cf7d084baa554ac2"
+    },
+    "BentDecomposition/ArithmeticFour.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/ArithmeticFour.lean",
+      "original_sha256": "5e806ea3706a3b3bc50c45fd9faad17a595c8e21019dc966d84b6807f3d24350"
+    },
+    "BentDecomposition/Basic.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Basic.lean",
+      "original_sha256": "3b7857bf790d8f1d17d2c58321010dd7c81f7edcff016955cd0955a82b65485d"
+    },
+    "BentDecomposition/Degree.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Degree.lean",
+      "original_sha256": "77beb8ceb77680250e1e53faeebb9ae9494d715c1e2f65c549e7a8f4f2ebeb5e"
+    },
+    "BentDecomposition/Geometry.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Geometry.lean",
+      "original_sha256": "434473a15f9c65f2baf565b34e1cd095a036a9264b3bae07293b5f3ad5e8c331"
+    },
+    "BentDecomposition/Main.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Main.lean",
+      "original_sha256": "cba494730aa0a3bfc98cbb8aa1a3beca3cabcf38a0457e8dd7cedce11bde82d1"
+    },
+    "BentDecomposition/Nonbent.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Nonbent.lean",
+      "original_sha256": "56b5e1c7930fbd93d16cb371dd5972123811e13d3cd549f0c7a33e013f8330ec"
+    },
+    "BentDecomposition/Restriction.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Restriction.lean",
+      "original_sha256": "1f5c659f2294e2b2ce48df0b913363540a0dc75f2f4776ebe49faf6f52286717"
+    },
+    "BentDecomposition/Support.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Support.lean",
+      "original_sha256": "1a81c949143e15fb203efffbd68e6069d3045b1f7c38bc1f19d8cf0844484a81"
+    },
+    "BentDecomposition/Walsh.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/Walsh.lean",
+      "original_sha256": "84bda3b68d22247176d77756efabc0c76225a9612f4b007558eb295799abafe9"
+    },
+    "BentDecomposition/WalshSupport.lean": {
+      "original_module": "MathResearch/BentDecompositions/Family/WalshSupport.lean",
+      "original_sha256": "32cb950af989152a2c13768dcc70431bd245110b2625553cd605a8a4eaaff4eb"
+    }
+  }
+}
