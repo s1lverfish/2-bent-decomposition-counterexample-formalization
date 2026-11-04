@@ -61,3 +61,24 @@ lake env lean BentDecomposition/Main.lean
 The final theorems use only Lean's standard `propext`, `Classical.choice`, and `Quot.sound` axioms. No `sorry`, additional mathematical axioms, `native_decide`, or external solver oracle is used. The audit checks these conditions in addition to the actual build. Verification trusts Lean's kernel and the pinned Lean/mathlib distribution.
 
 The formalization was developed with AI assistance and separately reviewed against the mathematical statement in the original research workspace. This repository is a standalone extraction: module paths and visibility were modernized, while the mathematical statements and proof arguments were retained (with minor linter cleanups). The ordinary Lean build, rather than a claim about the development process, supplies reproducible verification.
+
+## Explicit three-bent decomposition of F₈
+
+[`BentDecomposition/ThreeSummands.lean`](BentDecomposition/ThreeSummands.lean)
+formalizes the manuscript's explicit permutations P,Q, the Boolean offset r,
+and the three summands b₀,b₁,b₂. The internal four-coordinate encoding is
+x₁+2x₂+4x₃+8x₄, agreeing with the coordinate-vector table. Both permutations
+are proved bijective; all three summands are proved bent and their XOR is F₈.
+Together with the existing lower bound, `F8_exactly_three` establishes the
+minimum number of bent summands is exactly three.
+
+```sh
+lake build BentDecomposition.ThreeSummands
+lake build
+python3 scripts/check_axioms.py
+```
+
+The namespace is `BentDecompositions.Family.ThreeSummands`. Finite checks use
+ordinary `decide` and are checked by Lean's kernel. No admissions, extra
+mathematical axioms, `native_decide` or external solver are used. Checking
+this explicit witness can take longer than the symbolic family theorem.
