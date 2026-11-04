@@ -6,7 +6,5 @@ import BentDecomposition
 #print axioms BentDecompositions.Family.Bent.even_dimension
 #print axioms BentDecompositions.Family.walsh_parseval
 
-#print axioms BentDecompositions.Family.ThreeSummands.F8_three_bent
-#print axioms BentDecompositions.Family.ThreeSummands.F8_exactly_three
 
-#print axioms BentDecompositions.Family.ThreeSummands.b0_bent
+#print axioms BentDecompositions.Family.B0Bent.b0_bent

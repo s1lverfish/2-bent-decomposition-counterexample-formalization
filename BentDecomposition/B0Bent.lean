@@ -4,7 +4,7 @@ public import BentDecomposition.Main
 
 @[expose] public section
 
-namespace BentDecompositions.Family.ThreeSummands
+namespace BentDecompositions.Family.B0Bent
 
 abbrev Four := Finset (Fin 4)
 
@@ -25,9 +25,16 @@ def r (x : Four) : ZMod 2 := if code x = 9 ∨ code x = 10 ∨ code x = 15 then 
 
 def dot (x y : Four) : ZMod 2 := ((x ∩ y).card : ZMod 2)
 
-def b1 (x : Point 8) : ZMod 2 := dot (upper x) (P (lower x))
-def b2 (x : Point 8) : ZMod 2 := dot (upper x) (Q (lower x)) + r (lower x)
-def b0 (x : Point 8) : ZMod 2 := F8 x + b1 x + b2 x
+open scoped symmDiff
+
+/-- Exactly the paper's displayed formula, with binary vector addition. -/
+def b0 (x : Point 8) : ZMod 2 :=
+  F8 x + dot (upper x) (P (lower x) ∆ Q (lower x)) + r (lower x)
+
+private theorem dot_symmDiff (Y A B : Four) :
+    dot Y (A ∆ B) = dot Y A + dot Y B := by
+  revert Y A B
+  decide
 
 /-- Assemble the two four-coordinate blocks. -/
 def join (X Y : Four) : Point 8 := Finset.univ.filter fun i =>
@@ -89,7 +96,7 @@ private theorem F8_join (X Y : Four) : F8 (join X Y) = slice X.card Y := by
 
 private theorem b0_join (X Y : Four) :
     b0 (join X Y) = slice X.card Y + dot Y (P X) + dot Y (Q X) + r X := by
-  simp only [b0,b1,b2,F8_join,lower_join,upper_join]
+  simp only [b0,F8_join,lower_join,upper_join,dot_symmDiff]
   ring
 
 /-- Five slice weights by five frequency weights, in ordinary integers. -/
@@ -161,4 +168,4 @@ theorem b0_bent : Bent b0 := by
   exact reduced_bent (lower u) (upper u)
 
 #print axioms b0_bent
-end BentDecompositions.Family.ThreeSummands
+end BentDecompositions.Family.B0Bent

@@ -62,41 +62,28 @@ The final theorems use only Lean's standard `propext`, `Classical.choice`, and `
 
 The formalization was developed with AI assistance and separately reviewed against the mathematical statement in the original research workspace. This repository is a standalone extraction: module paths and visibility were modernized, while the mathematical statements and proof arguments were retained (with minor linter cleanups). The ordinary Lean build, rather than a claim about the development process, supplies reproducible verification.
 
-## Explicit three-bent decomposition of F₈
+## Bentness of the paper's b₀
 
-[`BentDecomposition/ThreeSummands.lean`](BentDecomposition/ThreeSummands.lean)
-formalizes the manuscript's explicit permutations P,Q, the Boolean offset r,
-and the three summands b₀,b₁,b₂. The internal four-coordinate encoding is
-x₁+2x₂+4x₃+8x₄, agreeing with the coordinate-vector table. Both permutations
-are proved bijective; all three summands are proved bent and their XOR is F₈.
-Together with the existing lower bound, `F8_exactly_three` establishes the
-minimum number of bent summands is exactly three.
+[`BentDecomposition/B0Bent.lean`](BentDecomposition/B0Bent.lean) defines
+b₀ directly by the paper's displayed formula:
+
+b₀(X,Y) = F₈(X,Y) + Y·(P(X)+Q(X)) + r(X).
+
+Binary vector addition is represented by symmetric difference. The
+four-coordinate encoding is x₁+2x₂+4x₃+8x₄; P,Q and r agree with the
+paper's vector table. F₈ is the existing polynomial 1+σ₂+σ₄.
+The theorem `BentDecompositions.Family.B0Bent.b0_bent` proves bentness
+using verified four-variable slice spectra and 16-term final sums.
+The table itself is checked by Lean. There are no b₁/b₂ bentness proofs
+or three-summand module in this version.
 
 ```sh
-lake build BentDecomposition.ThreeSummands
+lake build BentDecomposition.B0Bent
 lake build
 python3 scripts/check_axioms.py
 ```
 
-The namespace is `BentDecompositions.Family.ThreeSummands`. Finite checks use
-ordinary `decide` and are checked by Lean's kernel. No admissions, extra
-mathematical axioms, `native_decide` or external solver are used. Checking
-this explicit witness can take longer than the symbolic family theorem.
-
-### Fast standalone check of b₀
-
-`BentDecomposition/B0Bent.lean` proves `ThreeSummands.b0_bent` without
-checking b₁ or b₂. It splits the cube into two four-coordinate blocks,
-proves the resulting Walsh identity, checks the 5×5 table of symmetric
-four-variable slice spectra, and then checks 256 sums of only 16 terms.
-The table itself is verified by Lean; it is not an assumed certificate.
-
-```sh
-lake build BentDecomposition.B0Bent
-```
-
-The first measured Lean job took 3.0 seconds (7.45 seconds for the whole
-Lake command, including dependency replay). The existing full-triple
-module imports this proof; its separate b₁/b₂ evaluation proofs remain
-available but are unnecessary when checking b₀ alone. No theorem names
-or witness definitions have changed.
+The earlier slice proof checked in about three seconds on the development
+machine; runtime depends on the environment. Only Lean's standard axioms
+are used. The independent research records also compare every permutation
+entry and exceptional r input with the manuscript.
