@@ -8,3 +8,5 @@ import BentDecomposition
 
 #print axioms BentDecompositions.Family.ThreeSummands.F8_three_bent
 #print axioms BentDecompositions.Family.ThreeSummands.F8_exactly_three
+
+#print axioms BentDecompositions.Family.ThreeSummands.b0_bent

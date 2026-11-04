@@ -82,3 +82,21 @@ The namespace is `BentDecompositions.Family.ThreeSummands`. Finite checks use
 ordinary `decide` and are checked by Lean's kernel. No admissions, extra
 mathematical axioms, `native_decide` or external solver are used. Checking
 this explicit witness can take longer than the symbolic family theorem.
+
+### Fast standalone check of b₀
+
+`BentDecomposition/B0Bent.lean` proves `ThreeSummands.b0_bent` without
+checking b₁ or b₂. It splits the cube into two four-coordinate blocks,
+proves the resulting Walsh identity, checks the 5×5 table of symmetric
+four-variable slice spectra, and then checks 256 sums of only 16 terms.
+The table itself is verified by Lean; it is not an assumed certificate.
+
+```sh
+lake build BentDecomposition.B0Bent
+```
+
+The first measured Lean job took 3.0 seconds (7.45 seconds for the whole
+Lake command, including dependency replay). The existing full-triple
+module imports this proof; its separate b₁/b₂ evaluation proofs remain
+available but are unnecessary when checking b₀ alone. No theorem names
+or witness definitions have changed.

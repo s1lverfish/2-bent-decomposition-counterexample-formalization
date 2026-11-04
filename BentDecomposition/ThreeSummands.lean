@@ -1,33 +1,10 @@
 module
 
-public import BentDecomposition.Main
+public import BentDecomposition.B0Bent
 
 @[expose] public section
 
 namespace BentDecompositions.Family.ThreeSummands
-
-abbrev Four := Finset (Fin 4)
-
-/-- The eight-variable member of the existing infinite family. -/
-abbrev F8 : BF 8 := Fn 8
-
-def lower (x : Point 8) : Four := Finset.univ.filter (fun i => (⟨i.val, by omega⟩ : Fin 8) ∈ x)
-def upper (x : Point 8) : Four := Finset.univ.filter (fun i => (⟨i.val+4, by omega⟩ : Fin 8) ∈ x)
-
-/-- Internal encoding: (x1,x2,x3,x4) has code x1+2*x2+4*x3+8*x4. -/
-def code (x : Four) : ℕ := ∑ i ∈ x, 2^i.val
-def vector (j : ℕ) : Four := Finset.univ.filter (fun i => j.testBit i.val)
-
-def P (x : Four) : Four := vector (([0,1,2,4,6,7,9,5,10,12,3,8,15,11,13,14] : List ℕ).getD (code x) 0)
-def Q (x : Four) : Four := vector (([0,10,12,7,15,2,3,5,6,1,4,8,9,11,13,14] : List ℕ).getD (code x) 0)
-
-def r (x : Four) : ZMod 2 := if code x = 9 ∨ code x = 10 ∨ code x = 15 then 0 else 1
-
-def dot (x y : Four) : ZMod 2 := ((x ∩ y).card : ZMod 2)
-
-def b1 (x : Point 8) : ZMod 2 := dot (upper x) (P (lower x))
-def b2 (x : Point 8) : ZMod 2 := dot (upper x) (Q (lower x)) + r (lower x)
-def b0 (x : Point 8) : ZMod 2 := F8 x + b1 x + b2 x
 
 /-- This is exactly the displayed sum identity, with addition in F₂. -/
 theorem sum_eq_F8 (x : Point 8) : b0 x + b1 x + b2 x = F8 x := by
@@ -45,17 +22,6 @@ theorem P_bijective : Function.Bijective P := by decide
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
 theorem Q_bijective : Function.Bijective Q := by decide
-
-set_option maxRecDepth 100000 in
-set_option maxHeartbeats 0 in
-theorem b0_bent : Bent b0 := by
-  have h0 : b0 = fun x => (if x ∈ support 8 then 1 else 0) + b1 x + b2 x := by
-    funext x
-    exact congrArg (fun z : ZMod 2 => z + b1 x + b2 x)
-      (Fn_eq_indicator 3 (by decide) x)
-  rw [h0]
-  unfold Bent walsh
-  decide
 
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
